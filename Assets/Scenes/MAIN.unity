@@ -1883,6 +1883,9 @@ MonoBehaviour:
   lowerLimit: -4.2
   upInputKey: w
   downInputKey: s
+  altUpInputKey: up
+  altDownInputKey: down
+  singlePlayerMode: 0
 --- !u!61 &582907007
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private TMP_Text winText;
 
+
+    private playerLeft _playerLeft;
     [SerializeField]
     private Transform playerLeft;
     [SerializeField]
@@ -56,6 +58,11 @@ public class GameManager : MonoBehaviour
             Instance = this;
         }
     }
+    
+    void Start()
+    {
+        _playerLeft = playerLeft.GetComponent<playerLeft>();
+    }
 
     void Update()
     {
@@ -86,11 +93,12 @@ public class GameManager : MonoBehaviour
     public void setGame(bool singlePlayer)
     {
         //reset Player's Position
-
+        
         playerLeft.position = new Vector3(leftBoundary + 3f, 0, 0);
 
         if (singlePlayer)
         {
+            _playerLeft.singlePlayerMode = true;
             bot.position = new Vector3(rightBoundary - 3f, 0, 0);
             bot.gameObject.SetActive(true);
             playerRight.gameObject.SetActive(false);
@@ -98,6 +106,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            _playerLeft.singlePlayerMode = false;
             bot.gameObject.SetActive(false);
             playerRight.position = new Vector3(rightBoundary - 3f, 0, 0);
             playerRight.gameObject.SetActive(true);
